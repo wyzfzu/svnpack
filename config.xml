@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<config>
+    <!-- 全局SVN配置 -->
+    <svns>
+        <svn id="svn1">
+            <userName>name</userName>
+            <password>password</password>
+        </svn>
+    </svns>
+    <apps>
+        <!-- 项目A： id用于标识，name用于打包-->
+        <app id="yk_civil" name="项目A">
+            <!-- svn路径 -->
+            <property name="svnDir">svn://localhost/web/webproj</property>
+            <!-- svn用户名 -->
+            <property name="svnUserName">${svns.svn(0).userName}</property>
+            <!-- svn密码 -->
+            <property name="svnPassword">${svns.svn(0).password}</property>
+            <!-- 项目工程路径 -->
+            <property name="workspaceDir">e:/project/webproj</property>
+            <!-- 源代码相对项目工程路径 -->
+            <property name="srcDir">src/main/java</property>
+            <!-- 资源配置文件相对项目工程路径 -->
+            <property name="resourceDir">src/main/resources</property>
+            <!-- class文件路径 -->
+            <property name="classDir">webapp/WEB-INF/classes</property>
+            <!-- 部署文件相对项目工程路径 -->
+            <property name="webDir">webapp</property>
+            <!-- 打包导出路径 -->
+            <property name="targetDir">e:/patch/webproj</property>
+            <!-- 上次打包后的最新版本 -->
+            <property name="lastPackRevision">30</property>
+            <!-- 导出时要忽略的路径/文件夹/文件，均为正则表达式匹配 -->
+            <ignore>
+                <paths>
+                    <path>^webapp/test</path>
+                    <path>^webapp/test/model\\d</path>
+                </paths>
+                <dirs>
+                    <dir>[.].*</dir>
+                    <dir>html|pdm|sql</dir>
+                </dirs>
+                <files>
+                    <file>[.].*</file>
+                    <file>Thumbs.db</file>
+                    <file>jdbc.properties</file>
+                    <file>version.txt</file>
+                </files>
+            </ignore>
+        </app>
+    </apps>
+</config>
